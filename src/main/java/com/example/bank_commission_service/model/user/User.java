@@ -35,6 +35,10 @@ public class User extends BaseEntity<Long> {
     @Column(nullable = false)
     String accountNumber;
 
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    UserTier userTier = UserTier.REGULAR;
+
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Transaction> transactions = new ArrayList<>();
 

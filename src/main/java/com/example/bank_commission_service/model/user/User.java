@@ -1,11 +1,14 @@
 package com.example.bank_commission_service.model.user;
 
 import com.example.bank_commission_service.model.base.BaseEntity;
+import com.example.bank_commission_service.model.transaction.Transaction;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Getter
@@ -31,6 +34,9 @@ public class User extends BaseEntity<Long> {
 
     @Column(nullable = false)
     String accountNumber;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Transaction> transactions = new ArrayList<>();
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(

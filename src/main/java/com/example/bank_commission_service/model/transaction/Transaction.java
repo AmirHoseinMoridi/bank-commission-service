@@ -1,9 +1,8 @@
 package com.example.bank_commission_service.model.transaction;
 
 import com.example.bank_commission_service.model.base.BaseEntity;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import com.example.bank_commission_service.model.user.User;
+import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
@@ -22,4 +21,8 @@ public class Transaction extends BaseEntity<Long> {
 
     @Column(nullable = false)
     BigDecimal amount;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)
+    User user;
 }

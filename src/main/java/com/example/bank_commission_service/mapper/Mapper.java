@@ -6,7 +6,5 @@ import org.mapstruct.factory.Mappers;
 
 @org.mapstruct.Mapper(componentModel = "spring")
 public interface Mapper {
-    Mapper MAPPER = Mappers.getMapper(Mapper.class);
-
     Transaction paramToTransaction(TransactionParam param);
 }

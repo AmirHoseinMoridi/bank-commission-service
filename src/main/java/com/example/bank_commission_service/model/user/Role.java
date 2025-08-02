@@ -7,7 +7,15 @@ import jakarta.persistence.Table;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
-
+/*
+* برای جلوگیری از اشتباهات تایپی میشود مقدار
+* name
+* را به صورت
+* enum
+* در نظر گرفت. مزیت استفاده از
+* String
+* این است که برای اضافه کردن یک رول جدید نیازی به ارایه نسخه جدید نیست
+* */
 @Getter
 @Setter
 @NoArgsConstructor

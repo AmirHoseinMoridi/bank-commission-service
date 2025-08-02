@@ -17,6 +17,7 @@ import java.util.Set;
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Entity
+@Builder
 @Table(name = "users")
 public class User extends BaseEntity<Long> {
 
@@ -30,6 +31,7 @@ public class User extends BaseEntity<Long> {
 
     String lastName;
 
+    @Column(nullable = false, unique = true)
     String email;
 
     @Column(nullable = false)
@@ -37,9 +39,11 @@ public class User extends BaseEntity<Long> {
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
+    @Builder.Default
     UserTier userTier = UserTier.REGULAR;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    @Builder.Default
     private List<Transaction> transactions = new ArrayList<>();
 
     @ManyToMany(fetch = FetchType.EAGER)
@@ -48,6 +52,7 @@ public class User extends BaseEntity<Long> {
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id")
     )
+    @Builder.Default
     private Set<Role> roles = new HashSet<>();
 
 }

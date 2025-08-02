@@ -36,7 +36,7 @@ class VipUserDiscountTest {
     }
 
     @Test
-    void shouldApplyDiscountForVipUser() {
+    void apply_shouldApplyDiscountForVipUser() {
         Transaction transaction = createTransaction(UserTier.VIP);
 
         BigDecimal result = discount.apply(CURRENT_FEE, transaction);
@@ -46,7 +46,7 @@ class VipUserDiscountTest {
     }
 
     @Test
-    void shouldNotApplyDiscountForRegularUser() {
+    void apply_shouldNotApplyDiscountForRegularUser() {
         Transaction transaction = createTransaction(UserTier.REGULAR);
 
         BigDecimal result = discount.apply(CURRENT_FEE, transaction);
@@ -55,7 +55,7 @@ class VipUserDiscountTest {
     }
 
     @Test
-    void shouldNotApplyDiscountWhenUserTierIsNull() {
+    void apply_shouldNotApplyDiscountWhenUserTierIsNull() {
         User user = new User();
         user.setUserTier(null);
         Transaction transaction = new Transaction();

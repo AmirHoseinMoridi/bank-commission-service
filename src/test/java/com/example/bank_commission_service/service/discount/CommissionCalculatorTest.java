@@ -49,7 +49,7 @@ class CommissionCalculatorTest {
     }
 
     @Test
-    void shouldApplyAllDiscountPoliciesAndRoundUp() {
+    void calculate_shouldApplyAllDiscountPoliciesAndRoundUp() {
         mockTransactionAmount("1234567");
         mockBaseFeePercentage("0.01");
         mockMaxFee("100000");
@@ -66,7 +66,7 @@ class CommissionCalculatorTest {
     }
 
     @Test
-    void shouldNotExceedMaxFee() {
+    void calculate_shouldNotExceedMaxFee() {
         mockTransactionAmount("999999999");
         mockBaseFeePercentage("0.05");
         mockMaxFee("100000");
@@ -82,7 +82,7 @@ class CommissionCalculatorTest {
     }
 
     @Test
-    void shouldReturnZeroIfPolicyReturnsZero() {
+    void calculate_shouldReturnZeroIfPolicyReturnsZero() {
         mockTransactionAmount("1000");
         mockBaseFeePercentage("0.01");
         mockMaxFee("1000");
@@ -96,7 +96,7 @@ class CommissionCalculatorTest {
     }
 
     @Test
-    void shouldCalculateBaseFeeWhenNoPolicies() {
+    void calculate_shouldCalculateBaseFeeWhenNoPolicies() {
         calculator = new CommissionCalculator(commissionProperties, Collections.emptyList());
         mockTransactionAmount("200");
         mockBaseFeePercentage("0.05"); // baseFee=10
@@ -108,7 +108,7 @@ class CommissionCalculatorTest {
     }
 
     @Test
-    void shouldCapFeeByMaxFee() {
+    void calculate_shouldCapFeeByMaxFee() {
         mockTransactionAmount("1000");
         mockBaseFeePercentage("0.10"); // baseFee=100
         mockMaxFee("50");
@@ -122,7 +122,7 @@ class CommissionCalculatorTest {
     }
 
     @Test
-    void shouldAllowPolicyToIncreaseFee() {
+    void calculate_shouldAllowPolicyToIncreaseFee() {
         mockTransactionAmount("100");
         mockBaseFeePercentage("0.10"); // baseFee=10
         mockMaxFee("1000");
@@ -136,7 +136,7 @@ class CommissionCalculatorTest {
     }
 
     @Test
-    void shouldSkipNullPolicies() {
+    void calculate_shouldSkipNullPolicies() {
         calculator = new CommissionCalculator(commissionProperties, Arrays.asList(policy1, null, policy2));
         mockTransactionAmount("100");
         mockBaseFeePercentage("0.10"); // baseFee=10
@@ -151,14 +151,14 @@ class CommissionCalculatorTest {
     }
 
     @Test
-    void shouldReturnZeroIfTransactionAmountIsZero() {
+    void calculate_shouldReturnZeroIfTransactionAmountIsZero() {
         mockTransactionAmount("0");
 
         assertThrows(InvalidTransactionAmountException.class, () -> calculator.calculate(transaction));
     }
 
     @Test
-    void shouldReturnZeroIfTransactionAmountIsNegative() {
+    void calculate_shouldReturnZeroIfTransactionAmountIsNegative() {
         mockTransactionAmount("-1");
 
         assertThrows(InvalidTransactionAmountException.class, () -> calculator.calculate(transaction));

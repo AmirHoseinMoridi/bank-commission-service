@@ -38,7 +38,7 @@ class HighTransactionAmountDiscountTest {
     }
 
     @Test
-    void shouldApplyDiscountForTransactionAboveThreshold() {
+    void apply_shouldApplyDiscountForTransactionAboveThreshold() {
         Transaction transaction = createTransaction(new BigDecimal(2_000_000));
 
         BigDecimal result = discount.apply(CURRENT_FEE, transaction);
@@ -48,7 +48,7 @@ class HighTransactionAmountDiscountTest {
     }
 
     @Test
-    void shouldNotApplyDiscountForTransactionBelowThreshold() {
+    void apply_shouldNotApplyDiscountForTransactionBelowThreshold() {
         Transaction transaction = createTransaction(new BigDecimal(999_999));
 
         BigDecimal result = discount.apply(CURRENT_FEE, transaction);
@@ -57,7 +57,7 @@ class HighTransactionAmountDiscountTest {
     }
 
     @Test
-    void shouldNotApplyDiscountWhenAmountEqualsThreshold() {
+    void apply_shouldNotApplyDiscountWhenAmountEqualsThreshold() {
         Transaction transaction = createTransaction(new BigDecimal(1_000_000));
 
         BigDecimal result = discount.apply(CURRENT_FEE, transaction);

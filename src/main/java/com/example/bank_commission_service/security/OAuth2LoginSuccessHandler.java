@@ -1,9 +1,6 @@
 package com.example.bank_commission_service.security;
 
-import ch.qos.logback.core.joran.conditional.IfAction;
 import com.example.bank_commission_service.service.ServiceRegistry;
-import com.example.bank_commission_service.service.user.UserService;
-import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.AccessLevel;

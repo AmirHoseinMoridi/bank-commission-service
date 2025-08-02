@@ -31,7 +31,7 @@ public class CommissionController {
     Mapper mapper;
 
     @PostMapping("/calculate")
-    public ResponseEntity<BigDecimal> calculateCommission(@RequestBody TransactionParam transactionParam ,
+    public ResponseEntity<BigDecimal> calculateCommission(@RequestBody TransactionParam transactionParam,
                                                           @AuthenticationPrincipal Jwt jwt) {
 
         String username = jwt.getSubject();

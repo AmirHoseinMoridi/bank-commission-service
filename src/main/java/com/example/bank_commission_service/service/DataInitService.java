@@ -8,13 +8,11 @@ import com.example.bank_commission_service.repository.user.RoleRepository;
 import com.example.bank_commission_service.repository.user.UserRepository;
 import jakarta.annotation.PostConstruct;
 import lombok.AccessLevel;
-import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.HashSet;
 import java.util.Set;
 
 @FieldDefaults(level = AccessLevel.PRIVATE)

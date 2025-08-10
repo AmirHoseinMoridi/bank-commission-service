@@ -11,10 +11,10 @@ import java.math.BigDecimal;
 
 @Component
 @Getter
+@Setter
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @ConfigurationProperties(prefix = "commission")
 public class CommissionProperties {
-
     BigDecimal baseFeePercentage;
     BigDecimal maxFee;
     BigDecimal vipDiscountRate;

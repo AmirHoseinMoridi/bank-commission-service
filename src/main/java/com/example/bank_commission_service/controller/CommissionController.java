@@ -10,15 +10,14 @@ import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.math.BigDecimal;
+import java.security.Principal;
 
 @RestController
 @RequestMapping("/commission")
@@ -32,9 +31,9 @@ public class CommissionController {
 
     @PostMapping("/calculate")
     public ResponseEntity<BigDecimal> calculateCommission(@RequestBody TransactionParam transactionParam,
-                                                          @AuthenticationPrincipal Jwt jwt) {
+                                                          Principal principal) {
 
-        String username = jwt.getSubject();
+        String username = principal.getName();
         User user = serviceRegistry.getUserService().findByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found"));
 

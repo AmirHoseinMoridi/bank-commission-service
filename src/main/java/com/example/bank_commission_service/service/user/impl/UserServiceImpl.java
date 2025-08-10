@@ -81,6 +81,7 @@ public class UserServiceImpl implements UserService {
                 .email(registerParam.getEmail())
                 .firstName(registerParam.getFirstName())
                 .lastName(registerParam.getLastName())
+                .accountNumber(registerParam.getAccountNumber())
                 .build();
     }
 

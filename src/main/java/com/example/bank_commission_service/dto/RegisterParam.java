@@ -17,6 +17,7 @@ public class RegisterParam {
     String username;
 
     @Email()
+    @NotBlank()
     String email;
 
     @NotBlank()
@@ -28,4 +29,6 @@ public class RegisterParam {
     @NotBlank()
     String lastName;
 
+    @NotBlank()
+    String accountNumber;
 }
